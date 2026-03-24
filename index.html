@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<!-- V1 Simple Minimal | GitHub→Vercel | AI Website Factory -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Hub | Global Solutions Group</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a237e;
+            --accent: #ffd600;
+            --bg: #fff;
+            --surface: #f9fafb;
+            --text: #111827;
+            --muted: #6b7280;
+            --border: #e5e7eb;
+            --max-width: 1200px;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        section {
+            padding: 100px 24px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: transparent;
+            transition: var(--transition);
+            border-bottom: 1px solid transparent;
+        }
+
+        header.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-color: var(--border);
+            padding: 12px 0;
+        }
+
+        nav {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 20px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: -0.02em;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .header-cta {
+            background: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1400&q=85') center/cover no-repeat;
+            color: white;
+            padding-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            max-width: 900px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            opacity: 0.9;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 80px;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--text);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .btn-outline {
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--text);
+        }
+
+        .stat-bar {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 16px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            margin-bottom: 4px;
+        }
+
+        .stat-item p {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin: 0;
+            opacity: 0.7;
+        }
+
+        /* Services */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--muted);
+            font-size: 1.1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .service-card {
+            background: var(--surface);
+            padding: 40px;
+            border-radius: 20px;
+            transition: var(--transition);
+            border: 1px solid var(--border);
+        }
+
+        .service-card:hover {
+            background: white;
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            margin-bottom: 16px;
+            font-size: 1.5rem;
+        }
+
+        .service-card p {
+            color: var(--muted);
+        }
+
+        /* About */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .counter-box {
+            background: var(--surface);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .counter-box h4 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        /* Testimonials */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            padding: 40px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            background: white;
+        }
+
+        .rating {
+            color: var(--accent);
+            margin-bottom: 16px;
+            font-size: 1.25rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* CTA Banner */
+        .cta-banner {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 80px 24px;
+            border-radius: 24px;
+            margin: 60px auto;
+        }
+
+        .cta-banner h2 {
+            font-size: 3rem;
+            margin-bottom: 24px;
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-bottom: 60px;
+        }
+
+        .contact-card {
+            text-align: center;
+            padding: 40px;
+            border-radius: 20px;
+            background: var(--surface);
+        }
+
+        .contact-card a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 450px;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--surface);
+            padding: 80px 24px 40px;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .footer-bottom {
+            max-width: var(--max-width);
+            margin: 60px auto 0;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .header-cta {
+                display: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .hero h1 {
+                font-size: 3rem;
+            }
+            .stat-bar {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .cta-banner h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="header">
+        <nav>
+            <a href="#" class="logo">SKIN HUB</a>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="https://wa.me/918955473788" target="_blank" class="header-cta">Book Appointment</a>
+            <div class="menu-toggle">☰</div>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="reveal">
+            <h1>Expert Skin Care by Global Solutions.</h1>
+            <p>Kanpur's premier destination for medical-grade aesthetics and holistic skin health.</p>
+            <div class="hero-btns">
+                <a href="https://wa.me/918955473788" target="_blank" class="btn btn-primary">WhatsApp Us</a>
+                <a href="#services" class="btn btn-outline">Our Services</a>
+            </div>
+            <div class="stat-bar">
+                <div class="stat-item">
+                    <h3 data-count="4.9">0</h3>
+                    <p>Rating</p>
+                </div>
+                <div class="stat-item">
+                    <h3 data-count="231">0</h3>
+                    <p>Reviews</p>
+                </div>
+                <div class="stat-item">
+                    <h3 data-count="15">0</h3>
+                    <p>Countries</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="section-header reveal">
+            <h2>Our Specialized Services</h2>
+            <p>Advanced treatments tailored to your unique skin profile.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <h3>Laser Therapy</h3>
+                <p>Advanced laser hair removal and skin resurfacing using state-of-the-art global technology.</p>
+            </div>
+            <div class="service-card reveal">
+                <h3>Clinical HydraFacial</h3>
+                <p>The ultimate multi-step treatment to cleanse, exfoliate, and hydrate for an instant glow.</p>
+            </div>
+            <div class="service-card reveal">
+                <h3>Chemical Peels</h3>
+                <p>Medical-grade peels targeting acne, pigmentation, and uneven skin texture safely.</p>
+            </div>
+            <div class="service-card reveal">
+                <h3>Anti-Aging Solutions</h3>
+                <p>Non-surgical treatments designed to restore volume and smooth fine lines effectively.</p>
+            </div>
+            <div class="service-card reveal">
+                <h3>Skin Brightening</h3>
+                <p>Revitalize dull skin with our signature whitening and brightening infusion protocols.</p>
+            </div>
+            <div class="service-card reveal">
+                <h3>Acne Control</h3>
+                <p>Comprehensive acne and scar management plans curated by skin specialists.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="about-grid">
+            <div class="about-content reveal">
+                <h2>Redefining Beauty Standards in Kanpur.</h2>
+                <p>Skin Hub, a proud initiative of Global Solutions Group, brings international dermatological standards to your neighborhood. We combine medical expertise with luxury care to ensure your skin health is never compromised.</p>
+                <br>
+                <p>Our facility is equipped with FDA-approved technology and staffed by trained professionals committed to excellence.</p>
+            </div>
+            <div class="about-stats reveal">
+                <div class="counter-box">
+                    <h4 data-count="4.9">0</h4>
+                    <p>Client Rating</p>
+                </div>
+                <div class="counter-box">
+                    <h4 data-count="231">0</h4>
+                    <p>Verified Reviews</p>
+                </div>
+                <div class="counter-box">
+                    <h4 data-count="15">0</h4>
+                    <p>Global Reach</p>
+                </div>
+                <div class="counter-box">
+                    <h4 data-count="10000">0</h4>
+                    <p>Happy Clients</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials">
+        <div class="section-header reveal">
+            <h2>Client Experiences</h2>
+            <p>Join hundreds of satisfied clients who trust Skin Hub.</p>
+        </div>
+        <div class="testimonial-grid">
+            <div class="testimonial-card reveal">
+                <div class="rating">★★★★★</div>
+                <p class="testimonial-text">"The best skin clinic in Kanpur. The HydraFacial results were amazing and the staff is very professional."</p>
+                <div class="testimonial-author">Priya Sharma</div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="rating">★★★★★</div>
+                <p class="testimonial-text">"Very clean and hygienic environment. Their laser treatments are effective and virtually painless."</p>
+                <div class="testimonial-author">Rahul Kapoor</div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="rating">★★★★★</div>
+                <p class="testimonial-text">"Global Solutions Group truly brings international quality to Swaroop Nagar. Highly recommended!"</p>
+                <div class="testimonial-author">Anjali Verma</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="section-header reveal">
+            <h2>Our Facility</h2>
+            <p>Modern, hygienic, and designed for your comfort.</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item reveal">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=85" alt="Clinic Interior">
+            </div>
+            <div class="gallery-item reveal">
+                <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=85" alt="Treatment Room">
+            </div>
+            <div class="gallery-item reveal">
+                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=85" alt="Reception Area">
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="cta-banner reveal">
+            <h2>Ready for a Transformation?</h2>
+            <p style="margin-bottom: 32px; font-size: 1.2rem;">Book your consultation today and take the first step towards healthy skin.</p>
+            <a href="https://wa.me/918955473788" target="_blank" class="btn btn-primary" style="background: white; color: var(--primary);">Contact via WhatsApp</a>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section-header reveal">
+            <h2>Find Us</h2>
+            <p>Visit our clinic in the heart of Kanpur.</p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-card reveal">
+                <h3>Call Us</h3>
+                <a href="tel:+918955473788">+91 89554 73788</a>
+            </div>
+            <div class="contact-card reveal">
+                <h3>WhatsApp</h3>
+                <a href="https://wa.me/918955473788" target="_blank">Chat with us</a>
+            </div>
+            <div class="contact-card reveal">
+                <h3>Visit Us</h3>
+                <p style="font-size: 0.9rem; margin-top: 8px;">Shop No.2, 112/292, Swaroop Nagar, Kanpur</p>
+            </div>
+        </div>
+        <div class="map-container reveal">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3571.2295697207833!2d80.3129815754245!3d26.478953976910603!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399c386629f6044d%3A0xc487a5538e7b99!2sSwaroop%20Nagar%2C%20Kanpur%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin" 
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>SKIN HUB</h3>
+                <p style="color: var(--muted); max-width: 300px;">A Global Solutions Group Venture. Excellence in aesthetic skin care and professional services.</p>
+            </div>
+            <div class="footer-links">
+                <p style="font-weight: 700; margin-bottom: 16px;">Contact Detail</p>
+                <p style="color: var(--muted);">Shop No.2, 112/292, opp. Canara Bank<br>Swaroop Nagar, Kanpur, UP 208002</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 Skin Hub | Global Solutions Group. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Reveal on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Trigger counters if they exist in this section
+                    const counters = entry.target.querySelectorAll('[data-count]');
+                    counters.forEach(counter => animateCounter(counter));
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Sticky Header
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Counter Animation
+        function animateCounter(el) {
+            if (el.dataset.animated) return;
+            const target = parseFloat(el.dataset.count);
+            const duration = 2000;
+            const step = target / (duration / 16);
+            let current = 0;
+
+            const update = () => {
+                current += step;
+                if (current < target) {
+                    el.innerText = target % 1 === 0 ? Math.floor(current) : current.toFixed(1);
+                    if(target > 1000) el.innerText = Math.floor(current).toLocaleString();
+                    requestAnimationFrame(update);
+                } else {
+                    el.innerText = target % 1 === 0 ? target : target.toFixed(1);
+                    if(target > 1000) el.innerText = target.toLocaleString() + '+';
+                    if(target === 231) el.innerText = '231+';
+                    if(target === 15) el.innerText = '15+';
+                }
+            };
+            update();
+            el.dataset.animated = true;
+        }
+
+        // Mobile Menu (Simple alert for this minimal version)
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            const links = document.querySelector('.nav-links');
+            if(links.style.display === 'flex') {
+                links.style.display = 'none';
+            } else {
+                links.style.display = 'flex';
+                links.style.flexDirection = 'column';
+                links.style.position = 'absolute';
+                links.style.top = '100%';
+                links.style.left = '0';
+                links.style.width = '100%';
+                links.style.background = 'white';
+                links.style.padding = '20px';
+                links.style.borderBottom = '1px solid var(--border)';
+            }
+        });
+    </script>
+</body>
+</html>
